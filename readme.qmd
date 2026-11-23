@@ -1,0 +1,29 @@
+---
+title: "Groundhog Day Project"
+format: gfm
+---
+
+```{python}
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+```
+
+```{python}
+#| eval: False
+
+link  = 'https://countdowntogroundhogday.com/forecasters/'
+link_request = requests.get(link)
+pd.to_pickle(link_request.text, 'forecasters.pkl')
+```
+
+
+```{python}
+forecasters_data = pd.read_pickle('forecasters.pkl')
+
+import io
+table = pd.read_html(io.StringIO(forecasters_data), header=0)
+forecasters = pd.concat(table)
+
+forecasters
+```
