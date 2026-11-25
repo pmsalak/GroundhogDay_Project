@@ -33,9 +33,33 @@ forecasters = pd.concat(table)
 forecasters
 ```
 
+```{python}
+#use regex to make a column for deceased/alive and seperate city and state
+```
 
 ## Prediction Data
 
 ```{python}
+#| eval: False
 
+years = ['2026','2025','2024','2023','2022','2021','2020','2019']
+predictions = []
+
+for year in years:
+    link = f'https://countdowntogroundhogday.com/predictions/{year}_predictions'
+    link_request = requests.get(link)
+    table = pd.read_html(io.StringIO(link_request.text), header=0)
+    year_predictions = pd.concat(table)
+    year_predictions['Year'] = year
+    predictions.append(year_predictions)
+
+pd.to_pickle(predictions, 'predictions.pkl')
+```
+
+
+```{python}
+predictions_data = pd.read_pickle('predictions.pkl')
+predictions = pd.concat(predictions_data,ignore_index=True)
+
+predictions
 ```
