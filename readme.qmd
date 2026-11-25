@@ -1,14 +1,18 @@
 ---
-title: "Groundhog Day Project"
+title: "Groundhog Day Data Scraping Project"
 format: gfm
 ---
 
-## Groundhog Day!
+## Background
+
+
+## Forecaster Data
 
 ```{python}
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import io
 ```
 
 ```{python}
@@ -23,9 +27,15 @@ pd.to_pickle(link_request.text, 'forecasters.pkl')
 ```{python}
 forecasters_data = pd.read_pickle('forecasters.pkl')
 
-import io
 table = pd.read_html(io.StringIO(forecasters_data), header=0)
 forecasters = pd.concat(table)
 
 forecasters
+```
+
+
+## Prediction Data
+
+```{python}
+
 ```

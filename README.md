@@ -26,17 +26,6 @@ forecasters
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-&#10;    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-&#10;    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 
 |  | Name | Forecaster Type | Location | Year of Last Known Prediction |
 |----|----|----|----|----|
